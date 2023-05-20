@@ -87,12 +87,7 @@ class TopMenu extends React.Component {
 
                 <Segment>
                     <div>
-                        <Header>Fruit Teas</Header>
-                        <Header>Milk Teas</Header>
-                        <Header>Coffee</Header>
-                        <Header>Espresso ~ Flavors</Header>
-                        <Header>Toppings</Header>
-                        <Header>Milk Alternatives</Header>
+                        export default MenuSidebar
                     </div>
                 </Segment>
             </div>
