@@ -65,7 +65,7 @@ class TopMenu extends Component {
                     <Menu
                         name="home"
                         active={activeItem === 'home'}
-                        onClick={this.handleItemClick}}
+                        onClick={this.handleItemClick}
                     />
                     <Menu
                         name="order online"
