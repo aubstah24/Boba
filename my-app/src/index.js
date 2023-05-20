@@ -40,8 +40,15 @@ const MenuSidebar = () => {
                 <Icon name='heart outline'/>
                 TOPPINGS
             </Menu.Item>
-        </Sidebar.Pushable>
-    </Sidebar>
+        </Sidebar>
+
+        <Sidebar.Pusher>
+            <Segment basic>
+                <Header as='h3'>We List Bobas Here<Header>
+                <Image src='/Boba.jpeg'/>
+            </Segment>
+        </Sidebar.Pusher>
+    </Sidebar.Pushable>
 }
 
 class TopMenu extends Component {
