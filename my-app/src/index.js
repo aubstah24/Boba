@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'semantic-ui-css/semantic.min.css';
 import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar } from 'semantic-ui-react'
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+//import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 const MenuSidebar = () => {
     <Sidebar.Pushable as={Segment}>
