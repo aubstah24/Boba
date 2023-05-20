@@ -97,7 +97,42 @@ class TopMenu extends React.Component {
 
 }
 
+class MiddleImage extends React.Component {
+  render() {
+    return (
+        <Icon name='heart outline'/>
+    )
+  }
+}
 
+class BottomMenu extends React.Component {
+  render() {
+    return (
+        <div className="footer">
+          <Grid container>
+            <Grid.Row centered>
+              (c) 2023 What The Boba Shop <br/>
+              Owned and Run by Kapahulu Express Laundromat <br/>
+              1234 Pensacola St. Honolulu, HI
+            </Grid.Row>
+          </Grid>
+        </div>
+                 )
+  }
+}
+
+class BobaWebsite extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <TopMenu/>
+        <MiddleImage/>
+        <BottomMenu/>
+      </div>
+    );
+  }
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
