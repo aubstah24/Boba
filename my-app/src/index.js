@@ -44,7 +44,7 @@ const MenuSidebar = () => {
 
         <Sidebar.Pusher>
             <Segment basic>
-                <Header as='h3'>We List Bobas Here<Header>
+                <Header as='h3'>We List Bobas Here</Header>
                 <Image src='/Boba.jpeg'/>
             </Segment>
         </Sidebar.Pusher>
