@@ -91,7 +91,7 @@ class TopMenu extends React.Component {
                     </div>
                 </Segment>
             </div>
-        )
+        );
 
     }
 
@@ -101,7 +101,7 @@ class MiddleImage extends React.Component {
   render() {
     return (
         <Icon name='heart outline'/>
-    )
+    );
   }
 }
 
@@ -117,7 +117,7 @@ class BottomMenu extends React.Component {
             </Grid.Row>
           </Grid>
         </div>
-                 )
+    );
   }
 }
 
