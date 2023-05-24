@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'semantic-ui-css/semantic.min.js';
+//import 'semantic-ui-css/semantic.min.js';
 import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar, Icon } from 'semantic-ui-react';
 //import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 /*
