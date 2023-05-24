@@ -128,7 +128,6 @@ class BobaWebsite extends React.Component {
     return (
       <div>
         <TopMenu/>
-        //<MiddleImage/>
         <BottomMenu/>
       </div>
     );
