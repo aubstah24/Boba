@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.js';
 import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar, Icon } from 'semantic-ui-react';
 //import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-
+/*
 const MenuSidebar = () => {
     <Sidebar.Pushable as={Segment}>
         <Sidebar
@@ -51,7 +51,7 @@ const MenuSidebar = () => {
         </Sidebar.Pusher>
     </Sidebar.Pushable>
 }
-
+*/
 class TopMenu extends React.Component {
     state = { activeItem: 'home' }
 
@@ -87,7 +87,8 @@ class TopMenu extends React.Component {
 
                 <Segment>
                     <div>
-                        export default MenuSidebar
+                        <Header name="h2">Segment Area</Header>
+                        //export default MenuSidebar
                     </div>
                 </Segment>
             </div>
@@ -96,7 +97,7 @@ class TopMenu extends React.Component {
     }
 
 }
-
+/*
 class MiddleImage extends React.Component {
   render() {
     return (
@@ -104,7 +105,7 @@ class MiddleImage extends React.Component {
     );
   }
 }
-
+*/
 class BottomMenu extends React.Component {
   render() {
     return (
@@ -127,7 +128,7 @@ class BobaWebsite extends React.Component {
     return (
       <div>
         <TopMenu/>
-        <MiddleImage/>
+        //<MiddleImage/>
         <BottomMenu/>
       </div>
     );
