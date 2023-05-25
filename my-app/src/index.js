@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -52,7 +52,7 @@ const MenuSidebar = () => {
     </Sidebar.Pushable>
 }
 */
-class TopMenu extends React.Component {
+export default class MainMenu extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -64,22 +64,22 @@ class TopMenu extends React.Component {
             <div>
                 <Menu pointing secondary>
                     <Menu
-                        name="home"
+                        name='home'
                         active={activeItem === 'home'}
                         onClick={this.handleItemClick}
                     />
                     <Menu
-                        name="order online"
+                        name='order online'
                         active={activeItem === 'order online'}
                         onClick={this.handleItemClick}
                     />
                     <Menu
-                        name="about us"
+                        name='about us'
                         active={activeItem === 'about us'}
                         onClick={this.handleItemClick}
                     />
                     <Menu
-                        name="location"
+                        name='location'
                         active={activeItem === 'location'}
                         onClick={this.handleItemClick}
                     />
@@ -87,7 +87,7 @@ class TopMenu extends React.Component {
 
                 <Segment>
                     <div>
-                        <Header name="h2">Segment Area</Header>
+                        <Header name='h2'>Segment Area</Header>
                         //export default MenuSidebar
                     </div>
                 </Segment>
@@ -109,7 +109,7 @@ class MiddleImage extends React.Component {
 class BottomMenu extends React.Component {
   render() {
     return (
-        <div className="footer">
+        <div className="footer" centered>
           <Grid container>
             <Grid.Row centered>
               (c) 2023 What The Boba Shop <br/>
@@ -127,7 +127,7 @@ class BobaWebsite extends React.Component {
   render() {
     return (
       <div>
-        <TopMenu/>
+        <MainMenu/>
         <BottomMenu/>
       </div>
     );
