@@ -7,53 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar, Icon } from 'semantic-ui-react';
 //import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
-const MenuSidebar = () => {
-    <Sidebar.Pushable as={Segment}>
-        <Sidebar
-        as={Menu}
-        animation='overlay'
-        icon='labeled'
-        inverted
-        vertical
-        visible
-        >
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                FRUIT TEAS
-            </Menu.Item>
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                MILK TEAS
-            </Menu.Item>
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                COFFEE
-            </Menu.Item>
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                ESPRESSO ~ FLAVORS
-            </Menu.Item>
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                MILK ALTERNATIVES
-            </Menu.Item>
-            <Menu.Item as='a'>
-                <Icon name='heart outline'/>
-                TOPPINGS
-            </Menu.Item>
-        </Sidebar>
-
-        <Sidebar.Pusher>
-            <Segment basic>
-                <Header as='h3'>We List Bobas Here</Header>
-                <Image src='/Boba.jpeg'/>
-            </Segment>
-        </Sidebar.Pusher>
-    </Sidebar.Pushable>
-}
 
 
-export default class MainMenu extends Component {
+
+class MainMenu extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -86,35 +43,77 @@ export default class MainMenu extends Component {
                     />
                 </Menu>
 
-                   export default MenuSidebar
-
             </div>
         );
 
     }
 
 }
-/*
-class MiddleImage extends React.Component {
+
+class HomeSideMenu extends Component {
   render() {
-    return (
-        <Icon name='heart outline'/>
-    );
+
+      return (
+        <Header name='h2'>Middle Menu</Header>
+        <Sidebar.Pushable>
+            <Sidebar
+            as={Menu}
+            animation='overlay'
+            icon='labeled'
+            inverted
+            vertical
+            visible
+            >
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    FRUIT TEAS
+                </Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    MILK TEAS
+                </Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    COFFEE
+                </Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    ESPRESSO ~ FLAVORS
+                </Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    MILK ALTERNATIVES
+                </Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='heart outline'/>
+                    TOPPINGS
+                </Menu.Item>
+            </Sidebar>
+
+            <Sidebar.Pusher>
+                <Segment basic>
+                    <Header as='h3'>We List Bobas Here</Header>
+                    <Image src='/Boba.jpeg'/>
+                </Segment>
+            </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      );
   }
 }
-*/
+
+
 class BottomMenu extends Component {
   render() {
     return (
-        <div className="footer" centered>
-          <Grid container>
-            <Grid.Row centered>
+        <Container className="footer" textAlign='center'>
+          <Grid>
+            <Grid.Row>
               (c) 2023 What The Boba Shop <br/>
               Owned and Run by Kapahulu Express Laundromat <br/>
               1234 Pensacola St. Honolulu, HI
             </Grid.Row>
           </Grid>
-        </div>
+        </Container>
     );
   }
 }
@@ -125,6 +124,7 @@ class BobaWebsite extends React.Component {
     return (
       <div>
         <MainMenu/>
+        <HomeSideMenu/>
         <BottomMenu/>
       </div>
     );
