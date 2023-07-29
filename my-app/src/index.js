@@ -55,7 +55,7 @@ class HomeSideMenu extends Component {
 
       return (
         <Header name='h2'>Middle Menu</Header>
-        <Sidebar.Pushable>
+        <Sidebar.Pusher>
             <Sidebar
             as={Menu}
             animation='overlay'
@@ -96,7 +96,7 @@ class HomeSideMenu extends Component {
                     <Image src='/Boba.jpeg'/>
                 </Segment>
             </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        </Sidebar.Pusher>
       );
   }
 }
