@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import 'semantic-ui-css/semantic.min.js';
-import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar, Icon } from 'semantic-ui-react';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import 'react-horizontal-scrolling-menu/dist/styles.css';
+import { Container, Header, Menu, Image, Grid, Dropdown, Segment, Sidebar, Icon, Arrow } from 'semantic-ui-react';
 //import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 
@@ -28,12 +30,12 @@ class MainMenu extends Component {
                     />
                     <Menu
                         name='order online'
-                        active={activeItem === 'order online'}
+                        active={activeItem === 'orderonline'}
                         onClick={this.handleItemClick}
                     />
                     <Menu
                         name='about us'
-                        active={activeItem === 'about us'}
+                        active={activeItem === 'aboutus'}
                         onClick={this.handleItemClick}
                     />
                     <Menu
@@ -50,57 +52,156 @@ class MainMenu extends Component {
 
 }
 
+function LeftArrow() {
+  const { isFirstItemVisible, scrollPrev } =
+    React.useContext(VisibilityContext);
+
+  return (
+    <Icon name='arrow left' disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
+      Left
+    </Icon>
+  );
+}
+
+function RightArrow() {
+  const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
+
+  return (
+    <Icon name='arrow right' disabled={isLastItemVisible} onClick={() => scrollNext()}>
+      Right
+    </Icon>
+  );
+}
+
+function Card({ onClick, selected, title, itemId }) {
+  const visibility = React.useContext(VisibilityContext);
+
+
+  return (
+    <div
+      onClick={() => onClick(visibility)}
+      style={{
+        width: '160px',
+      }}
+      tabIndex={0}
+    >
+      <div className="card">
+        <div>{title}</div>
+        <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+        <div>selected: {JSON.stringify(!!selected)}</div>
+      </div>
+      <div
+        style={{
+          height: '200px',
+        }}
+      />
+    </div>
+  );
+}
+
+
 class HomeSideMenu extends Component {
+
+
+      const getItems = () =>
+              Array(20)
+                .fill(0)
+                .map((_, ind) => ({ id: `element-${ind}` }));
+                
   render() {
 
-      return (
-        <Header name='h2'>Middle Menu</Header>
-        <Sidebar.Pusher>
-            <Sidebar
-            as={Menu}
-            animation='overlay'
-            icon='labeled'
-            inverted
-            vertical
-            visible
-            >
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    FRUIT TEAS
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    MILK TEAS
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    COFFEE
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    ESPRESSO ~ FLAVORS
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    MILK ALTERNATIVES
-                </Menu.Item>
-                <Menu.Item as='a'>
-                    <Icon name='heart outline'/>
-                    TOPPINGS
-                </Menu.Item>
-            </Sidebar>
+          const [items, setItems] = React.useState(getItems);
+            const [selected, setSelected] = React.useState([]);
+            const [position, setPosition] = React.useState(0);
 
-            <Sidebar.Pusher>
-                <Segment basic>
-                    <Header as='h3'>We List Bobas Here</Header>
-                    <Image src='/Boba.jpeg'/>
-                </Segment>
-            </Sidebar.Pusher>
-        </Sidebar.Pusher>
-      );
+            const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+            const handleClick =
+              (id) =>
+              ({ getItemById, scrollToItem }) => {
+                const itemSelected = isItemSelected(id);
+
+                setSelected((currentSelected) =>
+                  itemSelected
+                    ? currentSelected.filter((el) => el !== id)
+                    : currentSelected.concat(id)
+                );
+              };
+
+      return (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {items.map(({ id }) => (
+            <Card
+              itemId={id} // NOTE: itemId is required for track items
+              title={id}
+              key={id}
+              onClick={handleClick(id)}selected={isItemSelected(id)}/>
+          ))},
+        </ScrollMenu>
+      )
   }
 }
 
+const SidebarVisible = () => (
+        <div>
+            <Header name='h2'>Middle Menu </Header>
+
+            <Sidebar.Pushable as={Segment}>
+                <Sidebar
+                as={Menu}
+                animation='overlay'
+                icon='labeled'
+                inverted
+                vertical
+                visible
+                >
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        FRUIT TEAS
+                    </Menu.Item>
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        MILK TEAS
+                    </Menu.Item>
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        COFFEE
+                    </Menu.Item>
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        ESPRESSO ~ FLAVORS
+                    </Menu.Item>
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        MILK ALTERNATIVES
+                    </Menu.Item>
+                    <Menu.Item as='a'>
+                        <Icon name='heart outline'/>
+                        TOPPINGS
+                    </Menu.Item>
+                </Sidebar>
+
+                <Sidebar.Pusher>
+                    <Segment basic>
+                        <Header as='h3'>We List Bobas Here</Header>
+                        <Image src='../Boba.jpeg'/>
+                    </Segment>
+                </Sidebar.Pusher>
+            </Sidebar.Pushable>
+        </div>
+)
+
+class FirstBody extends Component {
+    render () {
+        return (
+            <div>
+                <p>
+                    This is the first body of the webpage
+                </p>
+            </div>
+        );
+    }
+}
 
 class BottomMenu extends Component {
   render() {
@@ -125,6 +226,8 @@ class BobaWebsite extends React.Component {
       <div>
         <MainMenu/>
         <HomeSideMenu/>
+        <SidebarVisible/>
+        <FirstBody/>
         <BottomMenu/>
       </div>
     );
